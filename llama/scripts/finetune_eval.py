@@ -25,7 +25,7 @@ def load_model(model_path, tokenizer_path, device="cuda"):
 
 def main():
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    model_path = "finetune/tiny_model_finetuned_alpaca.pt"
+    model_path = "finetune/best_model.pt"
     tokenizer_path = "./data/tiny_tokenizer.json"
     data_path = "./data/alpaca-1k.json"
 

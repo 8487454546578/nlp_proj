@@ -1,9 +1,11 @@
 # file: generate.py
-def generate_text(prompt, model, tokenizer, max_new_tokens=100, device="cuda"):
+def generate_text(prompt, model, tokenizer, max_new_tokens=256, device="cuda"):
     import torch
     from torch.nn import functional as F
 
     input_ids = tokenizer.encode(prompt).ids
+    print("Prompt tokens:", tokenizer.decode(input_ids))
+
     input_ids = torch.tensor([input_ids], dtype=torch.long).to(device)
 
     eos_token_id = tokenizer.token_to_id("<|endoftext|>")
@@ -25,7 +27,9 @@ def generate_text(prompt, model, tokenizer, max_new_tokens=100, device="cuda"):
             break
 
     output_ids = input_ids[0].tolist()
-    return tokenizer.decode(output_ids)
+    prompt_ids = tokenizer.encode(prompt).ids
+    generated_ids = output_ids[len(prompt_ids):]
+    return tokenizer.decode(generated_ids).strip()
 
 
 
@@ -33,20 +37,28 @@ import random
 import csv
 
 
+import csv
+import random
+
 def generate_samples(model, tokenizer, alpaca_data, output_path="model_eval_samples.csv"):
     sample_50 = random.sample(alpaca_data, 50)
     csv_rows = []
 
     for i, sample in enumerate(sample_50):
-        prompt = f"Instruction: {sample['instruction']}\nInput: {sample['input']}\nResponse:"
+        prompt = (
+            f"### Instruction:\n{sample['instruction']}\n\n"
+            f"### Input:\n{sample['input']}\n\n"
+            f"### Response:\n"
+        )
         response = generate_text(prompt, model, tokenizer)
+
         csv_rows.append({
             "index": i + 1,
             "instruction": sample["instruction"],
             "input": sample["input"],
             "reference_output": sample["output"],
             "model_response": response,
-            "accurate": ""
+            "accurate": ""  # 手动评估后填“y”或“n”
         })
 
     with open(output_path, mode="w", newline='', encoding="utf-8") as file:
@@ -54,7 +66,7 @@ def generate_samples(model, tokenizer, alpaca_data, output_path="model_eval_samp
         writer.writeheader()
         writer.writerows(csv_rows)
 
-    print(f"Saved 50 evaluation samples to '{output_path}'. You can now open and annotate it (accurate: y/n).")
+    print(f"✅ Saved 50 evaluation samples to '{output_path}'. You can now open and annotate it (accurate: y/n).")
 
 
 import csv
@@ -82,10 +94,27 @@ def evaluate_accuracy(csv_file="model_eval_samples.csv"):
 
 
 
+# def test_example(model, tokenizer):
+#     instruction = "generate a response  "
+#     input_text = "Hello ! How are you ?"
+#     prompt = (
+#         f"### Instruction:\n{instruction}\n\n"
+#         f"### Input:\n{input_text}\n\n"
+#         f"### Response:\n"
+#     )
+
+#     response = generate_text(prompt, model, tokenizer)
+#     print("=== 模型生成内容 ===")
+#     print(response)
+
 def test_example(model, tokenizer):
-    instruction = "explain"
-    input_text = "explain gravaity"
-    prompt = f"Instruction:\n{instruction}\nInput:\n{input_text}\nOutput:\n"
+    instruction = "Explain the gravity "
+    input_text = ""
+    prompt = (
+        f"### Instruction:\n{instruction}\n\n"
+        f"### Input:\n{input_text}\n\n"
+        f"### Response:\n"
+    )
 
     response = generate_text(prompt, model, tokenizer)
     print("=== 模型生成内容 ===")

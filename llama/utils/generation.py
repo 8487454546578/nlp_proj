@@ -13,4 +13,6 @@ def generate_response(model, prompt, tokenizer, max_new_tokens=64, device="cuda"
             input_ids = torch.cat([input_ids, next_token.unsqueeze(0)], dim=1)
             if next_token.item() == tokenizer.token_to_id("[EOS]"):
                 break
+            if next_token.item() == tokenizer.token_to_id("<|endoftext|>"):
+                break
     return tokenizer.decode(input_ids[0].tolist())

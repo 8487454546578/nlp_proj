@@ -58,21 +58,28 @@ class Attention(nn.Module):
         self.qkv_proj = nn.Linear(dim, dim * 3, bias=False)
         self.out_proj = nn.Linear(dim, dim, bias=False)
 
-    def forward(self, x):
+    def forward(self, x, attention_mask=None):
         B, T, C = x.size()
         qkv = self.qkv_proj(x).reshape(B, T, self.n_heads, 3 * self.head_dim).permute(0, 2, 1, 3)
-        q, k, v = torch.chunk(qkv, 3, dim=-1)  # each: (B, H, T, D)
+        q, k, v = torch.chunk(qkv, 3, dim=-1)  # (B, H, T, D)
 
         q, k = apply_rope(q), apply_rope(k)
 
         attn_scores = torch.matmul(q, k.transpose(-1, -2)) / math.sqrt(self.head_dim)  # (B, H, T, T)
-        mask = torch.tril(torch.ones(T, T, device=x.device)).unsqueeze(0).unsqueeze(0)  # (1, 1, T, T)
-        attn_scores = attn_scores.masked_fill(mask == 0, float("-inf"))
+
+        causal_mask = torch.tril(torch.ones(T, T, device=x.device)).unsqueeze(0).unsqueeze(0)  # (1, 1, T, T)
+        attn_scores = attn_scores.masked_fill(causal_mask == 0, float('-inf'))
+
+        if attention_mask is not None:
+            # attention_mask: (B, T) -> (B, 1, 1, T)
+            attn_mask = attention_mask.unsqueeze(1).unsqueeze(2)
+            attn_scores = attn_scores.masked_fill(attn_mask == 0, float('-inf'))
 
         attn_probs = torch.softmax(attn_scores, dim=-1)
         attn_output = torch.matmul(attn_probs, v)  # (B, H, T, D)
         attn_output = attn_output.permute(0, 2, 1, 3).reshape(B, T, C)
         return self.out_proj(attn_output)
+
 
 
 
@@ -84,10 +91,11 @@ class TransformerBlock(nn.Module):
         self.ffn_norm = RMSNorm(dim)
         self.ffn = SwiGLU(dim, dim * 2)
 
-    def forward(self, x):
-        x = x + self.attn(self.attn_norm(x))
+    def forward(self, x, attention_mask=None):
+        x = x + self.attn(self.attn_norm(x), attention_mask)
         x = x + self.ffn(self.ffn_norm(x))
         return x
+
 
 #decoder-only 架构,简化版LLaMA
 class TinyTransformer(nn.Module):
@@ -102,9 +110,9 @@ class TinyTransformer(nn.Module):
         self.lm_head = nn.Linear(dim, vocab_size, bias=False)
         self.block_size = block_size
 
-    def forward(self, x):
+    def forward(self, x, attention_mask=None):
         x = self.token_embedding(x)
         for block in self.blocks:
-            x = block(x)
+            x = block(x, attention_mask)
         x = self.norm(x)
         return self.lm_head(x)

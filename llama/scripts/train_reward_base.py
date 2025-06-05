@@ -8,9 +8,11 @@ from torch.optim import Adam
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 from tokenizers import Tokenizer
-
+import sys
+sys.path.append(os.path.abspath(".."))
 from llama.models.transformer import TinyTransformer
 from llama.models.reward_model import RewardModel
+
 
 # ==== 超参数与设备 ====
 BATCH_SIZE = 16
