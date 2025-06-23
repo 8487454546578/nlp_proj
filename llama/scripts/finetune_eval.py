@@ -37,11 +37,11 @@ def main():
         alpaca_data = [json.loads(line) for line in f]
     sampled_data = random.sample(alpaca_data, 50)
 
-    print("== 生成样本 ==")
-    generate_samples(model, tokenizer, sampled_data, output_path="finetune/model_eval_samples.csv")
+    # print("== 生成样本 ==")
+    # generate_samples(model, tokenizer, sampled_data, output_path="finetune/model_eval_samples.csv")
 
-    print("== 精度评估 ==")
-    evaluate_accuracy(csv_file="finetune/model_eval_samples.csv")
+    # print("== 精度评估 ==")
+    # evaluate_accuracy(csv_file="finetune/model_eval_samples.csv")
 
     print("== 示例测试 ==")
     test_example(model, tokenizer)

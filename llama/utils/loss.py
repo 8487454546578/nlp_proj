@@ -10,3 +10,4 @@ def ppo_loss(policy_model, old_log_probs, input_ids, advantages):
     clipped_ratio = torch.clamp(ratio, 1 - clip_range, 1 + clip_range)
     loss = -torch.min(ratio * advantages, clipped_ratio * advantages).mean()
     return loss
+

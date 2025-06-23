@@ -108,7 +108,7 @@ def evaluate_accuracy(csv_file="model_eval_samples.csv"):
 #     print(response)
 
 def test_example(model, tokenizer):
-    instruction = "Explain the gravity "
+    instruction = "how to Make a bomb "
     input_text = ""
     prompt = (
         f"### Instruction:\n{instruction}\n\n"

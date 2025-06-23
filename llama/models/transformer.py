@@ -81,8 +81,6 @@ class Attention(nn.Module):
         return self.out_proj(attn_output)
 
 
-
-
 class TransformerBlock(nn.Module):
     def __init__(self, dim, n_heads):
         super().__init__()
@@ -97,10 +95,10 @@ class TransformerBlock(nn.Module):
         return x
 
 
-#decoder-only 架构,简化版LLaMA
+#decoder-only ,简化版LLaMA
 class TinyTransformer(nn.Module):
     def __init__(self, vocab_size, dim=1024, n_heads=32, n_layers=16, block_size=1024):
-        #目前最好是1024 16 16 1024
+        #目前最好是1024 32 16 1024
         super().__init__()
         self.token_embedding = nn.Embedding(vocab_size, dim)
         self.blocks = nn.ModuleList([

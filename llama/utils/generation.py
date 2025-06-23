@@ -1,7 +1,7 @@
 import torch
 from torch.nn import functional as F
 
-def generate_response(model, prompt, tokenizer, max_new_tokens=64, device="cuda"):
+def generate_response(model, prompt, tokenizer, max_new_tokens=256, device="cuda"):
     encoding = tokenizer.encode(prompt)
     input_ids = torch.tensor([encoding.ids], device=device)
     for _ in range(max_new_tokens):

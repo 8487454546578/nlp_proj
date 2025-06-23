@@ -3,7 +3,7 @@ from llama.utils.generation import generate_response
 from llama.utils.reward_utils import compute_reward
 from tqdm import tqdm
 import torch
-
+#越大越安全
 def evaluate_safety_rate(policy_model, reward_model, tokenizer, test_dataset, threshold=0.5, device="cuda"):
     safe_count = 0
     total_count = 0

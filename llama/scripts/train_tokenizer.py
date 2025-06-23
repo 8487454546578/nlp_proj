@@ -2,7 +2,7 @@ from tokenizers import Tokenizer, models, trainers, pre_tokenizers, decoders, pr
 import pickle
 tokenizer = Tokenizer(models.BPE(unk_token="<unk>"))
 
-# 使用 ByteLevel 分词器可以保留空格等边界信息
+# 使用 ByteLevel 分词器保留空格等边界信息
 tokenizer.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=True)
 tokenizer.decoder = decoders.ByteLevel()
 

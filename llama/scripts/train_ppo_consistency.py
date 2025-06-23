@@ -32,9 +32,8 @@ policy_model.train()
 
 base_model = TinyTransformer(vocab_size=vocab_size).to(device)
 reward_model = RewardModel(base_model).to(device)
-reward_model.load_state_dict(torch.load("reward_model_pairwise_best_for_ppo.pt"))
+reward_model.load_state_dict(torch.load("reward_model_pairwise_best.pt"))
 reward_model.eval()
-
 reward_model_for_eval = RewardModel(base_model).to(device)
 reward_model_for_eval.load_state_dict(torch.load("reward_model_pairwise_best_for_eval.pt"))
 reward_model_for_eval.eval()
@@ -161,16 +160,26 @@ optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, policy_model.para
 log_file = open("ppo_training_log.txt", "a")
 reward_curve, loss_curve, safety_curve = [], [], []
 
-for epoch in range(10):
+for epoch in range(5):
     total_loss, total_reward = 0.0, 0.0
+    total_consistency = 0.0
 
     for prompts in tqdm(train_loader, desc=f"Epoch {epoch}"):
-        prompt = prompts[0]  # 仅使用一个 prompt（可扩展 batch）
-        response = generate_response(policy_model, prompt, tokenizer)
-        reward = compute_reward(prompt, response, reward_model=reward_model, tokenizer=tokenizer)
+        prompt = prompts[0]
+
+        # === 用不同种子生成两个回答 ===
+        torch.manual_seed(random.randint(0, 10000))
+        response_a = generate_response(policy_model, prompt, tokenizer)
+        torch.manual_seed(random.randint(0, 10000))
+        response_b = generate_response(policy_model, prompt, tokenizer)
+
+        # === 计算奖励（用 response_a）===
+        #改为均值
+        reward = compute_reward(prompt, response_a, reward_model=reward_model, tokenizer=tokenizer)
         total_reward += reward
 
-        text = prompt + " " + response
+        # === PPO Loss ===
+        text = prompt + " " + response_a
         input_ids = torch.tensor([tokenizer.encode(text).ids], device=device)
 
         with torch.no_grad():
@@ -179,34 +188,52 @@ for epoch in range(10):
             old_log_probs = log_probs.gather(2, input_ids.unsqueeze(-1)).squeeze(-1)
 
         advantage = torch.tensor([reward], device=device)
-        loss = ppo_loss(policy_model, old_log_probs, input_ids, advantage)
-        total_loss += loss.item()
+        loss_ppo = ppo_loss(policy_model, old_log_probs, input_ids, advantage)
+
+        # === Consistency Loss ===
+        def get_sentence_embedding(response_text):
+            input_ids = tokenizer.encode(response_text).ids
+            input_tensor = torch.tensor([input_ids], device=device)
+            with torch.no_grad():
+                hidden_states = policy_model(input_tensor)
+            return hidden_states.mean(dim=1)  # 简化句向量：平均池化
+
+        emb_a = get_sentence_embedding(response_a)
+        emb_b = get_sentence_embedding(response_b)
+        loss_consistency = F.mse_loss(emb_a, emb_b)
+        total_consistency += loss_consistency.item()
+
+        # === 合并损失并优化 ===
+        loss_total = loss_ppo + 0.5 * loss_consistency  # λ = 0.5 
+        total_loss += loss_total.item()
 
         optimizer.zero_grad()
-        loss.backward()
+        loss_total.backward()
         optimizer.step()
 
-    # 安全评估与日志记录
+    # === 安全性评估 ===
     safety_rate = evaluate_safety_rate(policy_model, reward_model_for_eval, tokenizer, test_dataset=test_subset,threshold=0.6)
     avg_reward = total_reward / len(train_loader)
     avg_loss = total_loss / len(train_loader)
+    avg_consistency = total_consistency / len(train_loader)
 
     reward_curve.append(avg_reward)
     loss_curve.append(avg_loss)
     safety_curve.append(safety_rate)
 
-    log_msg = f"[{datetime.now()}] Epoch {epoch} | Loss: {avg_loss:.4f} | Avg Reward: {avg_reward:.4f} | Safety Rate: {safety_rate:.2%}"
+    log_msg = (f"[{datetime.now()}] Epoch {epoch} | Loss: {avg_loss:.4f} | "
+               f"Avg Reward: {avg_reward:.4f} | Safety Rate: {safety_rate:.2%} | "
+               f"Consistency Loss: {avg_consistency:.4f}")
     print(log_msg)
     log_file.write(log_msg + "\n")
 
 
-    torch.save(policy_model.state_dict(), f"tiny_model_ppo_0.6_epoch{epoch}.pt")
+    torch.save(policy_model.state_dict(), f"tiny_model_ppo_consistency_epoch{epoch}.pt")
 
 
 log_file.close()
 
 # ==== 绘制训练曲线 ====
-# 图 1：Avg Reward
 os.makedirs("rlhf_pic", exist_ok=True)
 plt.figure(figsize=(10, 6))
 plt.plot(reward_curve, label="Avg Reward")
@@ -215,7 +242,7 @@ plt.ylabel("Avg Reward")
 plt.title("PPO + LoRA: Avg Reward Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora0.6_reward.png")
+plt.savefig("rlhf_pic/ppo_lora_consistency0.6_reward.png")
 plt.close()
 
 # 图 2：Loss
@@ -226,7 +253,7 @@ plt.ylabel("Loss")
 plt.title("PPO + LoRA: Loss Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora0.6_loss.png")
+plt.savefig("rlhf_pic/ppo_lora_consistency0.6_loss.png")
 plt.close()
 
 # 图 3：Safety Rate
@@ -237,8 +264,9 @@ plt.ylabel("Safety Rate (%)")
 plt.title("PPO + LoRA: Safety Rate Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora0.6_safety.png")
+plt.savefig("rlhf_pic/ppo_lora_consistency0.6_safety.png")
 plt.close()
+
 
 plt.figure(figsize=(10, 6))
 plt.plot(reward_curve, label="Avg Reward")
@@ -249,5 +277,5 @@ plt.ylabel("Value")
 plt.title("PPO Training Curve")
 plt.legend()
 plt.grid(True)
-plt.savefig("rlhf_pic/ppo_lora_0.6_training_curve.png")
+plt.savefig("rlhf_pic/ppo_lora_consistency0.6_training_curve.png")
 plt.close()
