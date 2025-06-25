@@ -38,8 +38,13 @@ policy_model.train()
 
 base_model = TinyTransformer(vocab_size=vocab_size).to(device)
 reward_model = RewardModel(base_model).to(device)
-reward_model.load_state_dict(torch.load("reward_model_pairwise_best.pt"))
+reward_model.load_state_dict(torch.load("reward_model_pairwise_best_for_ppo.pt"))
 reward_model.eval()
+
+reward_model_for_eval = RewardModel(base_model).to(device)
+reward_model_for_eval.load_state_dict(torch.load("reward_model_pairwise_best_for_eval.pt"))
+reward_model_for_eval.eval()
+
 class PKUSafeDataset(Dataset):
     def __init__(self, jsonl_path):
         with open(jsonl_path, "r", encoding="utf-8") as f:
@@ -235,7 +240,7 @@ alpha = 0.1  # 对比损失权重
 temperature = 0.07  # 对比学习温度参数
 
 # === PPO + Contrastive Training 主循环 ===
-for epoch in range(5):
+for epoch in range(10):
     policy_model.train()
     total_reward, total_loss, total_cl_loss = 0, 0, 0
 
@@ -292,81 +297,18 @@ for epoch in range(5):
 
     # === 评估与模型保存 ===
     policy_model.eval()
-    safety_rate = evaluate_safety_rate(policy_model, reward_model, tokenizer, test_dataset=test_subset, threshold=0.6)
+    #safety_rate = evaluate_safety_rate(policy_model, reward_model_for_eval, tokenizer, test_dataset=test_subset, threshold=0.6)
     safety_rate = evaluate_safety_rate(
-        policy_model, reward_model, tokenizer,
+        policy_model, reward_model_for_eval, tokenizer,
         test_dataset=[item["prompt"] for item in test_subset],  # 👈 只传入 prompt
-        threshold=0.6
+        threshold=0.5
     )
+    avg_reward = total_reward / len(train_loader)
+    reward_curve.append(avg_reward)
+    loss_curve.append(total_loss.item())
+    safety_curve.append(safety_rate)
     print(f"[Epoch {epoch}] PPO Loss={total_loss/len(train_loader):.4f} | Contrastive Loss={total_cl_loss/len(train_loader):.4f} | Safety Rate={safety_rate:.2%}")
     torch.save(policy_model.state_dict(), f"tiny_model_ppo_epoch_contrastive{epoch}.pt")
-# for epoch in range(20):
-#     total_loss_val = 0.0
-#     total_reward = 0.0
-#     last_loss = None  # 仅保留最后一个 loss 的 graph
-
-#     for prompts in tqdm(train_loader, desc=f"Epoch {epoch}"):
-#         prompt = prompts[0]  # 单个样本
-#         response = generate_response(policy_model, prompt, tokenizer)
-#         reward = compute_reward(prompt, response, reward_model=reward_model, tokenizer=tokenizer)
-#         total_reward += reward
-
-#         text = prompt + " " + response
-#         input_ids = torch.tensor([tokenizer.encode(text).ids], device=device)
-
-#         # 获取旧策略的 log_probs（PPO 需要）
-#         with torch.no_grad():
-#             logits = policy_model(input_ids)
-#             log_probs = F.log_softmax(logits, dim=-1)
-#             old_log_probs = log_probs.gather(2, input_ids.unsqueeze(-1)).squeeze(-1)
-
-#         advantage = torch.tensor([reward], device=device)
-#         loss = ppo_loss(policy_model, old_log_probs, input_ids, advantage)
-
-#         total_loss_val += loss.item()
-#         last_loss = loss  # 只保留最后一个有 graph 的 loss
-
-#     # ===== 对比学习阶段（安全性增强） =====
-#     policy_model.eval()
-#     embedding_list, label_list = [], []
-
-#     for example in test_subset:
-#         prompt_text = example["prompt"]
-#         label = example["label"]
-#         input_ids = torch.tensor([tokenizer.encode(prompt_text).ids], device=device)
-
-#         with torch.no_grad():
-#             hidden_states = policy_model(input_ids)  # [1, L, D]
-#         prompt_embedding = hidden_states[:, 0, :]  # 取 [CLS] 或 mean pooling
-#         embedding_list.append(prompt_embedding.squeeze(0))
-#         label_list.append(label)
-
-#     embeddings = torch.stack(embedding_list)  # [N, D]
-#     labels = torch.tensor(label_list, dtype=torch.long, device=device)
-
-#     cl_loss = contrastive_loss(embeddings, labels, temperature=temperature)
-#     contrastive_curve.append(cl_loss.item())
-
-#     # ========== 联合优化 & 清理图 ==========
-#     avg_reward = total_reward / len(train_loader)
-#     safety_rate = evaluate_safety_rate(policy_model, reward_model, tokenizer, test_dataset=test_subset)
-
-#     # 使用最后一个 PPO loss 和 contrastive loss 联合优化
-#     total_epoch_loss = last_loss + alpha * cl_loss
-#     optimizer.zero_grad()
-#     total_epoch_loss.backward()
-#     optimizer.step()
-
-#     # 记录日志
-#     reward_curve.append(avg_reward)
-#     loss_curve.append(last_loss.item())
-#     safety_curve.append(safety_rate)
-
-#     log_msg = f"[{datetime.now()}] Epoch {epoch} | PPO Loss: {last_loss.item():.4f} | Contrastive Loss: {cl_loss.item():.4f} | Total Loss: {total_epoch_loss.item():.4f} | Avg Reward: {avg_reward:.4f} | Safety Rate: {safety_rate:.2%}"
-#     print(log_msg)
-#     log_file.write(log_msg + "\n")
-
-#     torch.save(policy_model.state_dict(), f"tiny_model_ppo_epoch{epoch}.pt")
 
 
 log_file.close()
@@ -378,7 +320,7 @@ plt.figure(figsize=(10, 6))
 plt.plot(reward_curve, label="Avg Reward")
 plt.xlabel("Epoch")
 plt.ylabel("Avg Reward")
-plt.title("PPO + LoRA: Avg Reward Curve")
+plt.title("PPO + LoRA + Constrancy: Avg Reward Curve")
 plt.grid(True)
 plt.legend()
 plt.savefig("rlhf_pic/ppo_lora_constra_reward.png")
@@ -389,7 +331,7 @@ plt.figure(figsize=(10, 6))
 plt.plot(loss_curve, label="Loss", color="orange")
 plt.xlabel("Epoch")
 plt.ylabel("Loss")
-plt.title("PPO + LoRA: Loss Curve")
+plt.title("PPO + LoRA + Constrancy: Loss Curve")
 plt.grid(True)
 plt.legend()
 plt.savefig("rlhf_pic/ppo_lora_loss.png")
@@ -400,10 +342,10 @@ plt.figure(figsize=(10, 6))
 plt.plot(safety_curve, label="Safety Rate", color="green")
 plt.xlabel("Epoch")
 plt.ylabel("Safety Rate (%)")
-plt.title("PPO + LoRA: Safety Rate Curve")
+plt.title("PPO + LoRA + Constrancy: Safety Rate Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_loraconstra_safety.png")
+plt.savefig("rlhf_pic/ppo_lora_constra_safety.png")
 plt.close()
 #
 plt.figure(figsize=(10, 6))
@@ -412,7 +354,7 @@ plt.plot(loss_curve, label="Loss")
 plt.plot(safety_curve, label="Safety Rate")
 plt.xlabel("Epoch")
 plt.ylabel("Value")
-plt.title("PPO Training Curve")
+plt.title("Constrancy:PPO Training Curve")
 plt.legend()
 plt.grid(True)
 plt.savefig("rlhf_pic/ppo_lora_constra_training_curve.png")

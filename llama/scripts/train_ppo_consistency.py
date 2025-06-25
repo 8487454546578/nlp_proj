@@ -32,11 +32,13 @@ policy_model.train()
 
 base_model = TinyTransformer(vocab_size=vocab_size).to(device)
 reward_model = RewardModel(base_model).to(device)
-reward_model.load_state_dict(torch.load("reward_model_pairwise_best.pt"))
+reward_model.load_state_dict(torch.load("reward_model_pairwise_best_for_ppo.pt"))
 reward_model.eval()
+
 reward_model_for_eval = RewardModel(base_model).to(device)
 reward_model_for_eval.load_state_dict(torch.load("reward_model_pairwise_best_for_eval.pt"))
 reward_model_for_eval.eval()
+
 
 
 # ==== 加载数据 ====
@@ -160,7 +162,7 @@ optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, policy_model.para
 log_file = open("ppo_training_log.txt", "a")
 reward_curve, loss_curve, safety_curve = [], [], []
 
-for epoch in range(5):
+for epoch in range(10):
     total_loss, total_reward = 0.0, 0.0
     total_consistency = 0.0
 
@@ -212,7 +214,7 @@ for epoch in range(5):
         optimizer.step()
 
     # === 安全性评估 ===
-    safety_rate = evaluate_safety_rate(policy_model, reward_model_for_eval, tokenizer, test_dataset=test_subset,threshold=0.6)
+    safety_rate = evaluate_safety_rate(policy_model, reward_model_for_eval, tokenizer, test_dataset=test_subset,threshold=0.5)
     avg_reward = total_reward / len(train_loader)
     avg_loss = total_loss / len(train_loader)
     avg_consistency = total_consistency / len(train_loader)
@@ -239,10 +241,10 @@ plt.figure(figsize=(10, 6))
 plt.plot(reward_curve, label="Avg Reward")
 plt.xlabel("Epoch")
 plt.ylabel("Avg Reward")
-plt.title("PPO + LoRA: Avg Reward Curve")
+plt.title("PPO + LoRA + Consistency: Avg Reward Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora_consistency0.6_reward.png")
+plt.savefig("rlhf_pic/ppo_lora_consistency0.5_reward.png")
 plt.close()
 
 # 图 2：Loss
@@ -250,10 +252,10 @@ plt.figure(figsize=(10, 6))
 plt.plot(loss_curve, label="Loss", color="orange")
 plt.xlabel("Epoch")
 plt.ylabel("Loss")
-plt.title("PPO + LoRA: Loss Curve")
+plt.title("PPO + LoRA + Consistency: Loss Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora_consistency0.6_loss.png")
+plt.savefig("rlhf_pic/ppo_lora_consistency0.5_loss.png")
 plt.close()
 
 # 图 3：Safety Rate
@@ -261,10 +263,10 @@ plt.figure(figsize=(10, 6))
 plt.plot(safety_curve, label="Safety Rate", color="green")
 plt.xlabel("Epoch")
 plt.ylabel("Safety Rate (%)")
-plt.title("PPO + LoRA: Safety Rate Curve")
+plt.title("PPO + LoRA + Consistency: Safety Rate Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora_consistency0.6_safety.png")
+plt.savefig("rlhf_pic/ppo_lora_consistency0.5_safety.png")
 plt.close()
 
 
@@ -274,8 +276,8 @@ plt.plot(loss_curve, label="Loss")
 plt.plot(safety_curve, label="Safety Rate")
 plt.xlabel("Epoch")
 plt.ylabel("Value")
-plt.title("PPO Training Curve")
+plt.title("Consistency PPO Training Curve")
 plt.legend()
 plt.grid(True)
-plt.savefig("rlhf_pic/ppo_lora_consistency0.6_training_curve.png")
+plt.savefig("rlhf_pic/ppo_lora_consistency0.5_training_curve.png")
 plt.close()

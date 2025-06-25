@@ -187,7 +187,7 @@ for epoch in range(10):
         optimizer.step()
 
     # 安全评估与日志记录
-    safety_rate = evaluate_safety_rate(policy_model, reward_model_for_eval, tokenizer, test_dataset=test_subset,threshold=0.6)
+    safety_rate = evaluate_safety_rate(policy_model, reward_model_for_eval, tokenizer, test_dataset=test_subset,threshold=0.5)
     avg_reward = total_reward / len(train_loader)
     avg_loss = total_loss / len(train_loader)
 
@@ -200,7 +200,7 @@ for epoch in range(10):
     log_file.write(log_msg + "\n")
 
 
-    torch.save(policy_model.state_dict(), f"tiny_model_ppo_0.6_epoch{epoch}.pt")
+    torch.save(policy_model.state_dict(), f"tiny_model_ppo_0.5_epoch{epoch}.pt")
 
 
 log_file.close()
@@ -215,7 +215,7 @@ plt.ylabel("Avg Reward")
 plt.title("PPO + LoRA: Avg Reward Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora0.6_reward.png")
+plt.savefig("rlhf_pic/ppo_lora0.5_reward.png")
 plt.close()
 
 # 图 2：Loss
@@ -226,7 +226,7 @@ plt.ylabel("Loss")
 plt.title("PPO + LoRA: Loss Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora0.6_loss.png")
+plt.savefig("rlhf_pic/ppo_lora0.5_loss.png")
 plt.close()
 
 # 图 3：Safety Rate
@@ -237,7 +237,7 @@ plt.ylabel("Safety Rate (%)")
 plt.title("PPO + LoRA: Safety Rate Curve")
 plt.grid(True)
 plt.legend()
-plt.savefig("rlhf_pic/ppo_lora0.6_safety.png")
+plt.savefig("rlhf_pic/ppo_lora0.5_safety.png")
 plt.close()
 
 plt.figure(figsize=(10, 6))
@@ -249,5 +249,5 @@ plt.ylabel("Value")
 plt.title("PPO Training Curve")
 plt.legend()
 plt.grid(True)
-plt.savefig("rlhf_pic/ppo_lora_0.6_training_curve.png")
+plt.savefig("rlhf_pic/ppo_lora_0.5_training_curve.png")
 plt.close()
