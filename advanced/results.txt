@@ -1,0 +1,586 @@
+(pytorch) bead@amax:/data/bead/NLP/pro/nlp_proj$ PYTHONPATH=. python /data/bead/NLP/pro/nlp_proj/llama/scripts/train_reward_base_for_ppo.py
+Epoch 1: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:31<00:00,  5.34it/s]
+
+Epoch 1, Loss: 0.6789, Val Acc: 0.6823
+Saved best model at epoch 1 with acc 0.6823
+Epoch 2: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.42it/s]
+
+Epoch 2, Loss: 0.6556, Val Acc: 0.7090
+Saved best model at epoch 2 with acc 0.7090
+Epoch 3: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.43it/s]
+
+Epoch 3, Loss: 0.6411, Val Acc: 0.7258
+Saved best model at epoch 3 with acc 0.7258
+Epoch 4: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.43it/s]
+
+Epoch 4, Loss: 0.6310, Val Acc: 0.7324
+Saved best model at epoch 4 with acc 0.7324
+Epoch 5: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.43it/s]
+
+Epoch 5, Loss: 0.6235, Val Acc: 0.7258
+Epoch 6: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.42it/s]
+
+Epoch 6, Loss: 0.6176, Val Acc: 0.7425
+Saved best model at epoch 6 with acc 0.7425
+Epoch 7: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.43it/s]
+
+Epoch 7, Loss: 0.6128, Val Acc: 0.7391
+Epoch 8: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 8, Loss: 0.6087, Val Acc: 0.7458
+Saved best model at epoch 8 with acc 0.7458
+Epoch 9: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 9, Loss: 0.6053, Val Acc: 0.7458
+Epoch 10: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 10, Loss: 0.6023, Val Acc: 0.7525
+Saved best model at epoch 10 with acc 0.7525
+Epoch 11: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.43it/s]
+
+Epoch 11, Loss: 0.5998, Val Acc: 0.7492
+Epoch 12: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.43it/s]
+
+Epoch 12, Loss: 0.5975, Val Acc: 0.7525
+Epoch 13: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.43it/s]
+
+Epoch 13, Loss: 0.5954, Val Acc: 0.7525
+Epoch 14: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [07:36<00:00,  2.72s/it]
+
+Epoch 14, Loss: 0.5936, Val Acc: 0.7559
+Saved best model at epoch 14 with acc 0.7559
+Epoch 15: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.43it/s]
+
+Epoch 15, Loss: 0.5919, Val Acc: 0.7592
+Saved best model at epoch 15 with acc 0.7592
+Epoch 16: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:31<00:00,  5.41it/s]
+
+Epoch 16, Loss: 0.5904, Val Acc: 0.7525
+Epoch 17: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 17, Loss: 0.5890, Val Acc: 0.7559
+Epoch 18: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 18, Loss: 0.5877, Val Acc: 0.7559
+Epoch 19: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 19, Loss: 0.5864, Val Acc: 0.7592
+Epoch 20: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 20, Loss: 0.5853, Val Acc: 0.7592
+Epoch 21: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 21, Loss: 0.5842, Val Acc: 0.7592
+Epoch 22: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 22, Loss: 0.5832, Val Acc: 0.7592
+Epoch 23: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.45it/s]
+
+Epoch 23, Loss: 0.5823, Val Acc: 0.7559
+Epoch 24: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.45it/s]
+
+Epoch 24, Loss: 0.5814, Val Acc: 0.7525
+Epoch 25: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 25, Loss: 0.5805, Val Acc: 0.7525
+Epoch 26: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 26, Loss: 0.5797, Val Acc: 0.7559
+Epoch 27: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 27, Loss: 0.5789, Val Acc: 0.7559
+Epoch 28: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.46it/s]
+
+Epoch 28, Loss: 0.5782, Val Acc: 0.7559
+Epoch 29: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.46it/s]
+
+Epoch 29, Loss: 0.5775, Val Acc: 0.7525
+Epoch 30: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:30<00:00,  5.44it/s]
+
+Epoch 30, Loss: 0.5768, Val Acc: 0.7525
+
+Evaluating best model on test set...
+Test Accuracy: 0.6753
+
+
+(pytorch) bead@amax:/data/bead/NLP/pro/nlp_proj$ PYTHONPATH=. python /data/bead/NLP/pro/nlp_proj/llama/scripts/train_reward_base_for_eval.py
+Epoch 1: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.86it/s]
+
+Epoch 1, Loss: 0.5929, Val Acc: 0.7358
+Saved best model at epoch 1 with acc 0.7358
+Epoch 2: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.92it/s]
+
+Epoch 2, Loss: 0.5442, Val Acc: 0.7860
+Saved best model at epoch 2 with acc 0.7860
+Epoch 3: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:35<00:00,  4.79it/s]
+
+Epoch 3, Loss: 0.5100, Val Acc: 0.7692
+Epoch 4: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 4, Loss: 0.4843, Val Acc: 0.7759
+Epoch 5: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 5, Loss: 0.4670, Val Acc: 0.7692
+Epoch 6: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.89it/s]
+
+Epoch 6, Loss: 0.4495, Val Acc: 0.7726
+Epoch 7: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.91it/s]
+
+Epoch 7, Loss: 0.4365, Val Acc: 0.7692
+Epoch 8: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.89it/s]
+
+Epoch 8, Loss: 0.4203, Val Acc: 0.7793
+Epoch 9: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 9, Loss: 0.4090, Val Acc: 0.7793
+Epoch 10: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 10, Loss: 0.3987, Val Acc: 0.7926
+Saved best model at epoch 10 with acc 0.7926
+Epoch 11: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.89it/s]
+
+Epoch 11, Loss: 0.3912, Val Acc: 0.7860
+Epoch 12: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 12, Loss: 0.3836, Val Acc: 0.7993
+Saved best model at epoch 12 with acc 0.7993
+Epoch 13: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:35<00:00,  4.79it/s]
+
+Epoch 13, Loss: 0.3780, Val Acc: 0.7592
+Epoch 14: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 14, Loss: 0.3757, Val Acc: 0.7592
+Epoch 15: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 15, Loss: 0.3715, Val Acc: 0.7592
+Epoch 16: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 16, Loss: 0.3711, Val Acc: 0.7625
+Epoch 17: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 17, Loss: 0.3679, Val Acc: 0.7793
+Epoch 18: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 18, Loss: 0.3656, Val Acc: 0.7726
+Epoch 19: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 19, Loss: 0.3631, Val Acc: 0.7893
+Epoch 20: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 20, Loss: 0.3605, Val Acc: 0.7759
+Epoch 21: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.88it/s]
+
+Epoch 21, Loss: 0.3607, Val Acc: 0.7893
+Epoch 22: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 22, Loss: 0.3609, Val Acc: 0.7525
+Epoch 23: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 23, Loss: 0.3599, Val Acc: 0.7525
+Epoch 24: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 24, Loss: 0.3603, Val Acc: 0.7793
+Epoch 25: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 25, Loss: 0.3572, Val Acc: 0.7759
+Epoch 26: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 26, Loss: 0.3570, Val Acc: 0.7692
+Epoch 27: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 27, Loss: 0.3550, Val Acc: 0.7592
+Epoch 28: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 28, Loss: 0.3555, Val Acc: 0.7625
+Epoch 29: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 29, Loss: 0.3539, Val Acc: 0.7592
+Epoch 30: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████| 168/168 [00:34<00:00,  4.93it/s]
+
+Epoch 30, Loss: 0.3578, Val Acc: 0.7425
+
+Evaluating best model on test set...
+Test Accuracy: 0.7874
+
+
+(pytorch) bead@amax:/data/bead/NLP/pro/nlp_proj$  PYTHONPATH=. python /data/bead/NLP/pro/nlp_proj/llama/scripts/train_ppo_lora.py
+危险样本子集大小: 100
+[LoRA] Replaced blocks.0.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.1.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.2.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.3.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.4.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.5.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.6.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.7.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.8.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.9.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.10.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.11.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.12.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.13.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.14.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.15.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w3 with LoRALinear.
+Epoch 0: 100%|████████████████████████████████| 125/125 [04:50<00:00,  2.33s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [03:44<00:00,  2.25s/it]
+[2025-06-24 08:01:04.939359] Epoch 0 | Loss: -0.4991 | Avg Reward: 0.4991 | Safety Rate: 35.00%
+Epoch 1: 100%|████████████████████████████████| 125/125 [02:23<00:00,  1.15s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [01:43<00:00,  1.03s/it]
+[2025-06-24 08:05:15.909653] Epoch 1 | Loss: -0.6861 | Avg Reward: 0.6861 | Safety Rate: 44.00%
+Epoch 2: 100%|████████████████████████████████| 125/125 [04:36<00:00,  2.21s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [05:56<00:00,  3.56s/it]
+[2025-06-24 08:15:51.956106] Epoch 2 | Loss: -0.4449 | Avg Reward: 0.4449 | Safety Rate: 21.00%
+Epoch 3: 100%|████████████████████████████████| 125/125 [08:31<00:00,  4.09s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [08:53<00:00,  5.34s/it]
+[2025-06-24 08:33:20.693880] Epoch 3 | Loss: -0.4103 | Avg Reward: 0.4103 | Safety Rate: 52.00%
+Epoch 4: 100%|████████████████████████████████| 125/125 [09:40<00:00,  4.64s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [09:02<00:00,  5.42s/it]
+[2025-06-24 08:52:06.481359] Epoch 4 | Loss: -0.5368 | Avg Reward: 0.5368 | Safety Rate: 43.00%
+Epoch 5: 100%|████████████████████████████████| 125/125 [09:38<00:00,  4.62s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [09:09<00:00,  5.49s/it]
+[2025-06-24 09:10:56.925060] Epoch 5 | Loss: -0.5033 | Avg Reward: 0.5033 | Safety Rate: 34.00%
+Epoch 6: 100%|████████████████████████████████| 125/125 [09:37<00:00,  4.62s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [09:12<00:00,  5.52s/it]
+[2025-06-24 09:29:49.980350] Epoch 6 | Loss: -0.3934 | Avg Reward: 0.3934 | Safety Rate: 41.00%
+Epoch 7: 100%|████████████████████████████████| 125/125 [09:39<00:00,  4.63s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [09:04<00:00,  5.44s/it]
+[2025-06-24 09:48:34.382827] Epoch 7 | Loss: -0.4552 | Avg Reward: 0.4552 | Safety Rate: 20.00%
+Epoch 8: 100%|████████████████████████████████| 125/125 [09:44<00:00,  4.67s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [09:06<00:00,  5.46s/it]
+[2025-06-24 10:07:25.549108] Epoch 8 | Loss: -0.4853 | Avg Reward: 0.4853 | Safety Rate: 39.00%
+Epoch 9: 100%|████████████████████████████████| 125/125 [09:37<00:00,  4.62s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [08:52<00:00,  5.32s/it]
+[2025-06-24 10:25:56.199121] Epoch 9 | Loss: -0.4249 | Avg Reward: 0.4249 | Safety Rate: 31.00%
+
+
+
+(pytorch) bead@amax:/data/bead/NLP/pro/nlp_proj$  PYTHONPATH=. python /data/bead/NLP/pro/nlp_proj/llama/scripts/train_ppo_consistency.py
+危险样本子集大小: 100
+[LoRA] Replaced blocks.0.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.1.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.2.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.3.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.4.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.5.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.6.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.7.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.8.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.9.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.10.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.11.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.12.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.13.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.14.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.15.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w3 with LoRALinear.
+Epoch 0: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 125/125 [09:47<00:00,  4.70s/it]
+Evaluating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [03:12<00:00,  1.92s/it]
+[2025-06-24 20:39:36.510342] Epoch 0 | Loss: -0.1115 | Avg Reward: 0.5522 | Safety Rate: 36.00% | Consistency Loss: 0.8813
+Epoch 1: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 125/125 [05:00<00:00,  2.40s/it]
+Evaluating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [02:08<00:00,  1.29s/it]
+[2025-06-24 20:46:49.035886] Epoch 1 | Loss: -0.3325 | Avg Reward: 0.6227 | Safety Rate: 45.00% | Consistency Loss: 0.5805
+Epoch 2: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 125/125 [10:19<00:00,  4.95s/it]
+Evaluating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [07:25<00:00,  4.45s/it]
+[2025-06-24 21:04:37.725212] Epoch 2 | Loss: -0.2472 | Avg Reward: 0.4893 | Safety Rate: 23.00% | Consistency Loss: 0.4843
+Epoch 3: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 125/125 [18:05<00:00,  8.69s/it]
+Evaluating:  51%|██████████████████████████████████████████████████████████████████████████████                                                                           | 51/100 [04:43<04:38,  5.69s/it]
+Evaluating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [09:16<00:00,  5.56s/it]
+[2025-06-24 21:32:03.293205] Epoch 3 | Loss: 0.0133 | Avg Reward: 0.4007 | Safety Rate: 34.00% | Consistency Loss: 0.8278
+Epoch 4: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 125/125 [19:27<00:00,  9.34s/it]
+Evaluating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [09:12<00:00,  5.53s/it]
+[2025-06-24 22:00:47.617407] Epoch 4 | Loss: 0.0712 | Avg Reward: 0.5399 | Safety Rate: 48.00% | Consistency Loss: 1.2223
+
+
+
+
+
+
+(pytorch) bead@amax:/data/bead/NLP/pro/nlp_proj$ PYTHONPATH=. python /data/bead/NLP/pro/nlp_proj/llama/scripts/train_ppo_constrancy.py
+危险样本子集大小: 100
+[LoRA] Replaced blocks.0.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.1.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.2.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.3.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.4.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.5.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.6.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.7.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.8.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.9.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.10.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.11.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.12.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.13.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.14.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.15.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w3 with LoRALinear.
+Epoch 0: 100%|█████████████████████████████████████████████████████████████████████████████████████| 125/125 [34:57<00:00, 16.78s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [01:20<00:00,  1.24it/s]
+[Epoch 0] PPO Loss=-0.5304 | Contrastive Loss=0.7793 | Safety Rate=61.00%
+Epoch 1: 100%|█████████████████████████████████████████████████████████████████████████████████████| 125/125 [57:13<00:00, 27.47s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [10:30<00:00,  6.31s/it]
+[Epoch 1] PPO Loss=-0.4223 | Contrastive Loss=0.7702 | Safety Rate=19.00%
+Epoch 2: 100%|███████████████████████████████████████████████████████████████████████████████████| 125/125 [1:40:12<00:00, 48.10s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [10:55<00:00,  6.56s/it]
+[Epoch 2] PPO Loss=-0.4823 | Contrastive Loss=0.7673 | Safety Rate=50.00%
+Epoch 3: 100%|███████████████████████████████████████████████████████████████████████████████████| 125/125 [1:34:25<00:00, 45.33s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [09:15<00:00,  5.55s/it]
+[Epoch 3] PPO Loss=-0.5211 | Contrastive Loss=0.7667 | Safety Rate=56.00%
+Epoch 4: 100%|███████████████████████████████████████████████████████████████████████████████████| 125/125 [1:18:28<00:00, 37.67s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [08:59<00:00,  5.39s/it]
+[Epoch 4] PPO Loss=-0.4104 | Contrastive Loss=0.7665 | Safety Rate=35.00%
+Epoch 5: 100%|███████████████████████████████████████████████████████████████████████████████████| 125/125 [1:17:14<00:00, 37.07s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [08:22<00:00,  5.02s/it]
+[Epoch 5] PPO Loss=-0.3846 | Contrastive Loss=0.7672 | Safety Rate=31.00%
+Epoch 6: 100%|███████████████████████████████████████████████████████████████████████████████████| 125/125 [1:15:28<00:00, 36.23s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [09:01<00:00,  5.42s/it]
+[Epoch 6] PPO Loss=-0.2900 | Contrastive Loss=0.7679 | Safety Rate=21.00%
+Epoch 7: 100%|███████████████████████████████████████████████████████████████████████████████████| 125/125 [2:25:54<00:00, 70.03s/it]
+Evaluating: 100%|████████████████████████████████████████████████████████████████████████████████| 100/100 [1:14:10<00:00, 44.51s/it]
+[Epoch 7] PPO Loss=-0.2039 | Contrastive Loss=0.7681 | Safety Rate=20.00%
+Epoch 8: 100%|██████████████████████████████████████████████████████████████████████████████████| 125/125 [5:27:23<00:00, 157.15s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [09:11<00:00,  5.51s/it]
+[Epoch 8] PPO Loss=-0.1966 | Contrastive Loss=0.7682 | Safety Rate=17.00%
+Epoch 9: 100%|███████████████████████████████████████████████████████████████████████████████████| 125/125 [1:18:54<00:00, 37.87s/it]
+Evaluating: 100%|██████████████████████████████████████████████████████████████████████████████████| 100/100 [08:58<00:00,  5.38s/it]
+[Epoch 9] PPO Loss=-0.1955 | Contrastive Loss=0.7686 | Safety Rate=29.00%
+
+
+(pytorch) bead@amax:/data/bead/NLP/pro/nlp_proj$ PYTHONPATH=. python /data/bead/NLP/pro/nlp_proj/llama/scripts/train_ppo_consistency.py
+危险样本子集大小: 100
+[LoRA] Replaced blocks.0.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.0.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.1.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.1.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.2.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.2.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.3.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.3.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.4.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.4.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.5.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.5.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.6.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.6.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.7.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.7.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.8.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.8.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.9.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.9.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.10.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.10.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.11.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.11.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.12.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.12.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.13.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.13.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.14.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.14.ffn.w3 with LoRALinear.
+[LoRA] Replaced blocks.15.attn.out_proj with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w1 with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w2 with LoRALinear.
+[LoRA] Replaced blocks.15.ffn.w3 with LoRALinear.
+Epoch 0: 100%|████████████████████████████████| 125/125 [09:48<00:00,  4.71s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [02:26<00:00,  1.46s/it]
+[2025-06-24 23:45:53.569274] Epoch 0 | Loss: -0.2098 | Avg Reward: 0.5777 | Safety Rate: 43.00% | Consistency Loss: 0.7359
+Epoch 1: 100%|████████████████████████████████| 125/125 [05:17<00:00,  2.54s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [02:07<00:00,  1.28s/it]
+[2025-06-24 23:53:21.929167] Epoch 1 | Loss: -0.3711 | Avg Reward: 0.6363 | Safety Rate: 58.00% | Consistency Loss: 0.5303
+Epoch 2: 100%|████████████████████████████████| 125/125 [12:31<00:00,  6.01s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [09:45<00:00,  5.85s/it]
+[2025-06-25 00:15:42.616233] Epoch 2 | Loss: -0.4013 | Avg Reward: 0.6530 | Safety Rate: 83.00% | Consistency Loss: 0.5035
+Epoch 3: 100%|████████████████████████████████| 125/125 [24:02<00:00, 11.54s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [10:36<00:00,  6.37s/it]
+[2025-06-25 00:50:25.536941] Epoch 3 | Loss: -0.0426 | Avg Reward: 0.6853 | Safety Rate: 61.00% | Consistency Loss: 1.2854
+Epoch 4: 100%|████████████████████████████████| 125/125 [23:59<00:00, 11.52s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [10:35<00:00,  6.35s/it]
+[2025-06-25 01:25:03.450271] Epoch 4 | Loss: 0.1516 | Avg Reward: 0.5948 | Safety Rate: 44.00% | Consistency Loss: 1.4929
+Epoch 5: 100%|████████████████████████████████| 125/125 [24:40<00:00, 11.84s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [10:53<00:00,  6.53s/it]
+[2025-06-25 02:00:40.650207] Epoch 5 | Loss: 0.4506 | Avg Reward: 0.4413 | Safety Rate: 39.00% | Consistency Loss: 1.7837
+Epoch 6: 100%|████████████████████████████████| 125/125 [24:56<00:00, 11.97s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [10:41<00:00,  6.42s/it]
+[2025-06-25 02:36:19.586745] Epoch 6 | Loss: 0.4514 | Avg Reward: 0.4368 | Safety Rate: 36.00% | Consistency Loss: 1.7764
+Epoch 7: 100%|████████████████████████████████| 125/125 [24:44<00:00, 11.88s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [10:44<00:00,  6.45s/it]
+[2025-06-25 03:11:49.932179] Epoch 7 | Loss: 0.6266 | Avg Reward: 0.3297 | Safety Rate: 28.00% | Consistency Loss: 1.9126
+Epoch 8: 100%|████████████████████████████████| 125/125 [24:31<00:00, 11.77s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [10:45<00:00,  6.45s/it]
+[2025-06-25 03:47:07.813333] Epoch 8 | Loss: 0.9354 | Avg Reward: 0.3703 | Safety Rate: 30.00% | Consistency Loss: 2.6114
+Epoch 9: 100%|████████████████████████████████| 125/125 [24:52<00:00, 11.94s/it]
+Evaluating: 100%|█████████████████████████████| 100/100 [10:46<00:00,  6.46s/it]
+[2025-06-25 04:22:47.406686] Epoch 9 | Loss: 0.9561 | Avg Reward: 0.3263 | Safety Rate: 31.00% | Consistency Loss: 2.5649
